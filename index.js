@@ -5,6 +5,7 @@ const favicon = require("express-favicon");
 const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
+const port = process.env.PORT || 8000;
 
 if (process.env.NODE_ENV === "test") {
   app.use(morgan("dev"));
@@ -21,15 +22,13 @@ app.use(
 );
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "..", "client-ui", "build")));
-if (process.env.NODE_ENV !== "test") {
+if (!process.env.NODE_ENV === "test") {
   app.get("*", function (req, res) {
-    const index = path.join(
-      __dirname,
-      "..",
-      "client-ui",
-      "build",
-      "index.html"
-    );
+    const index = path.join(__dirname, "client-ui", "build", "index.html");
     res.sendFile(index);
   });
 }
+
+app.listen(port, () => {
+  console.log(`Products server listening on port ${port}`);
+});
