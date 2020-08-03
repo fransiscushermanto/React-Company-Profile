@@ -1,0 +1,77 @@
+@import "./style.scss";
+
+footer {
+  display: flex !important;
+  align-items: center;
+  background-color: #f5fbff;
+
+  padding: 50px;
+  .logo-brand {
+    flex: 1;
+    height: 100%;
+    padding: 0px 20px;
+    > h1 {
+      text-align: right;
+      font-weight: 700;
+      line-height: 32px;
+      margin: 0;
+    }
+    > p {
+      text-align: right;
+      margin: 0;
+      span {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  .social-media {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 0px 20px;
+    .media-icon {
+      padding: 10px;
+      border-radius: 30px;
+      border: 1px dashed black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0px 3px;
+      transition: 0.5s all ease;
+      svg {
+        width: 20px;
+      }
+      &.whatsapp {
+        svg {
+          path {
+            fill: #3cb82c !important;
+          }
+        }
+        &:hover {
+          svg > path {
+            fill: #2f9222 !important;
+          }
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    .logo-brand {
+      border: none;
+      margin-bottom: 10px;
+      > h1 {
+        text-align: center;
+        font-size: 40px;
+      }
+      > p {
+        text-align: center;
+      }
+    }
+  }
+}

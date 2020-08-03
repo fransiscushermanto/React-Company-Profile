@@ -1,0 +1,37 @@
+@import "./style.scss";
+
+.card {
+  background-size: cover;
+  border: 0px !important;
+  max-height: 150000px;
+  margin-bottom: 30px;
+  background-position: center center !important;
+  &.shape-rounded {
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+  }
+
+  &.header-card {
+    z-index: -1;
+    top: 0px;
+    position: absolute;
+    left: -0px;
+    right: -8px;
+    overflow: hidden;
+  }
+
+  > .bg-highlight {
+    background-color: #4a89dc !important;
+    &.card-overlay {
+      background-position: center center;
+      background-size: cover !important;
+
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}

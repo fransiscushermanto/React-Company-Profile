@@ -1,0 +1,46 @@
+@import "./variable.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+* {
+  font-family: $font-primary;
+}
+
+.app,
+.root,
+.home {
+  overflow: hidden;
+}
+
+button {
+  outline: none;
+  &:focus {
+    outline: none !important;
+  }
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+.opacity-95 {
+  opacity: 0.95;
+}
+
+.blue {
+  color: $blue;
+}
+
+@include media-breakpoint-down(sm) {
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: none !important;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
