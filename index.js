@@ -1,12 +1,20 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const favicon = require("express-favicon");
 const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === "test") {
+  app.use(morgan("dev"));
+}
 app.use(cors());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(bodyParser.json());
 app.use(
   favicon(path.join(__dirname, "..", "client-ui", "build", "favicon.ico"))
