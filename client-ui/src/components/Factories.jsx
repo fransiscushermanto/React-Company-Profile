@@ -56,7 +56,7 @@ export const Carousel = ({ arrItem }) => {
     <CarouselMUI
       animation="slide"
       interval={10000}
-      navButtonsAlwaysVisible={false}
+      navButtonsAlwaysVisible={isRowBased ? true : false}
     >
       {arrItem.map((item, i) => (
         <Item key={i} item={item} index={i} />
