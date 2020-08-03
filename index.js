@@ -17,20 +17,12 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(
-  favicon(path.join(__dirname, "..", "client-ui", "build", "favicon.ico"))
-);
+app.use(favicon(path.join(__dirname, "client-ui", "build", "favicon.ico")));
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "..", "client-ui", "build")));
+app.use(express.static(path.join(__dirname, "client-ui", "build")));
 if (!process.env.NODE_ENV === "test") {
   app.get("*", function (req, res) {
-    const index = path.join(
-      __dirname,
-      "..",
-      "client-ui",
-      "build",
-      "index.html"
-    );
+    const index = path.join(__dirname, "client-ui", "build", "index.html");
     res.sendFile(index);
   });
 }
