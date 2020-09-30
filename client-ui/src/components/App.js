@@ -65,6 +65,7 @@ const App = ({ children }) => {
 
   useEffect(() => {
     window.addEventListener("load", function () {
+      console.log("LOADED");
       setTimeout(() => {
         setLoading(false);
       }, 500);
