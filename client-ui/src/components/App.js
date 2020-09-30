@@ -64,18 +64,14 @@ const App = ({ children }) => {
   // }, [firebase]);
 
   useEffect(() => {
-    window.addEventListener("load", function () {
-      console.log("LOADED");
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
+    return () =>
       setTimeout(() => {
         setLoading(false);
       }, 500);
-    });
-    return () =>
-      window.removeEventListener("load", function () {
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
-      });
   }, []);
 
   return (
