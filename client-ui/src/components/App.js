@@ -35,33 +35,33 @@ const App = ({ children }) => {
   const dispatch = useDispatch();
   const userGlobal = useSelector((state) => state.auth.user);
 
-  // useEffect(() => {
-  //   firebase.auth.onAuthStateChanged(async (user) => {
-  //     console.log(user);
-  //     if (user !== null) {
-  //       firebase.firestore
-  //         .collection("users")
-  //         .doc(user.uid)
-  //         .onSnapshot(async (data) => {
-  //           const decodedToken = await verifyToken(
-  //             await firebase.loginWithCustomToken(
-  //               await generateToken(user.uid, { user: data.data() })
-  //             ),
-  //             data.data().disabled
-  //           );
-  //           if (decodedToken.verified) {
-  //             dispatch(
-  //               actions.signIn({
-  //                 uid: decodedToken.uid,
-  //                 data: decodedToken.user,
-  //                 verified: decodedToken.verified,
-  //               })
-  //             );
-  //           }
-  //         });
-  //     }
-  //   });
-  // }, [firebase]);
+  useEffect(() => {
+    firebase.auth.onAuthStateChanged(async (user) => {
+      console.log(user);
+      if (user !== null) {
+        firebase.firestore
+          .collection("users")
+          .doc(user.uid)
+          .onSnapshot(async (data) => {
+            const decodedToken = await verifyToken(
+              await firebase.loginWithCustomToken(
+                await generateToken(user.uid, { user: data.data() })
+              ),
+              data.data().disabled
+            );
+            if (decodedToken.verified) {
+              dispatch(
+                actions.signIn({
+                  uid: decodedToken.uid,
+                  data: decodedToken.user,
+                  verified: decodedToken.verified,
+                })
+              );
+            }
+          });
+      }
+    });
+  }, [firebase]);
 
   useEffect(() => {
     setTimeout(() => {
