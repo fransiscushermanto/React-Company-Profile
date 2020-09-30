@@ -65,9 +65,7 @@ const App = ({ children }) => {
 
   useEffect(() => {
     window.addEventListener("load", function () {
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
+      setLoading(false);
     });
     return () =>
       window.removeEventListener("load", function () {
