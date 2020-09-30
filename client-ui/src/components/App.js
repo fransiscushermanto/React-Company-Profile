@@ -37,6 +37,7 @@ const App = ({ children }) => {
 
   useEffect(() => {
     firebase.auth.onAuthStateChanged(async (user) => {
+      console.log(user);
       if (user !== null) {
         firebase.firestore
           .collection("users")
