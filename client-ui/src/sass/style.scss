@@ -3,12 +3,25 @@
 
 * {
   font-family: $font-primary;
+  box-sizing: border-box;
 }
 
 .app,
 .root,
 .home {
   overflow: hidden;
+}
+
+.o-hidden {
+  overflow: hidden !important;
+}
+
+.oy-hidden {
+  overflow-y: hidden !important;
+}
+
+.ox-hidden {
+  overflow-x: hidden !important;
 }
 
 button {
@@ -30,6 +43,44 @@ body {
   color: $blue;
 }
 
+.loader-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  .loader {
+    position: relative;
+    margin: 0 auto;
+    width: 50px;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    > .circular {
+      animation: rotate 2s linear infinite;
+      height: 100%;
+      transform-origin: center center;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      > .path {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        stroke-linecap: round;
+      }
+    }
+  }
+}
+
 @include media-breakpoint-down(sm) {
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: none !important;
@@ -43,4 +94,35 @@ body {
   ::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
+}
+
+.ripple {
+  position: absolute;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: ripple 1s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }

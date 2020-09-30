@@ -1,23 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, useHistory, Switch, Route } from "react-router-dom";
+import { BrowserRouter, useHistory } from "react-router-dom";
 import HttpsRedirect from "react-https-redirect";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
 
+import reducers from "./reducers";
 import App from "./components/App";
-import Home from "./components/Home/HomeGroup";
+import Firebase from "./firebase/config";
+import { FirebaseContext } from "./firebase/FirebaseContext";
+
 import "./sass/style.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from "./serviceWorker";
+
+const store = createStore(reducers, applyMiddleware(reduxThunk));
+
 ReactDOM.render(
-  <HttpsRedirect>
-    <BrowserRouter>
-      <App history={useHistory}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </App>
-    </BrowserRouter>
-  </HttpsRedirect>,
+  <Provider store={store}>
+    <HttpsRedirect>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <BrowserRouter>
+          <App history={useHistory} />
+        </BrowserRouter>
+      </FirebaseContext.Provider>
+    </HttpsRedirect>
+  </Provider>,
   document.getElementById("root")
 );
 

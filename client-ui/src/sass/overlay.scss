@@ -1,14 +1,14 @@
 @import "./style.scss";
 
-.card {
+.card.overlay {
+  pointer-events: none;
   background-size: cover;
   border: 0px !important;
   max-height: 150000px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   background-position: center center !important;
   &.shape-rounded {
-    border-bottom-left-radius: 45px;
-    border-bottom-right-radius: 45px;
+    clip-path: circle(900px at 50% -50%);
   }
 
   &.header-card {
@@ -21,7 +21,7 @@
   }
 
   > .bg-highlight {
-    background-color: #4a89dc !important;
+    background-color: #4affdc !important;
     &.card-overlay {
       background-position: center center;
       background-size: cover !important;

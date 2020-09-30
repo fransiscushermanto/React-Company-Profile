@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../sass/footer.scss";
+import "../sass/footer.scss";
 const PageFooter = () => {
   const arrSocialMedia = [
     {

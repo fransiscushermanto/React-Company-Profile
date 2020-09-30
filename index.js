@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -26,6 +27,10 @@ if (!process.env.NODE_ENV === "test") {
     res.sendFile(index);
   });
 }
+
+//Routes
+app.use("/auth", require("./server/routes/auth"));
+app.use("/admin", require("./server/routes/admin"));
 
 app.listen(port, () => {
   console.log(`Products server listening on port ${port}`);

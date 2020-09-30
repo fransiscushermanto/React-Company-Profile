@@ -4,8 +4,10 @@ main {
   display: flex !important;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   > .Carousel-root-1,
-  .jss1 {
+  .jss1,
+  .product-carousel {
     width: 100%;
     margin-bottom: 30px;
     position: relative;
@@ -42,16 +44,22 @@ main {
     }
 
     > .Carousel-buttonWrapper-5,
-    .jss5 {
+    .jss5,
+    div:nth-child(2),
+    div:nth-child(3) {
       z-index: 100;
       height: 100vh !important;
+      @include media-breakpoint-between(md, sm) {
+        height: 300px !important;
+      }
       @include media-breakpoint-down(sm) {
         height: 300px !important;
       }
     }
 
     > .Carousel-indicators-2,
-    .jss2 {
+    .jss2,
+    div:nth-child(4) {
       position: absolute;
       bottom: 10%;
       z-index: 100;
@@ -62,7 +70,7 @@ main {
     }
   }
 
-  > .product-categories-slider {
+  .product-categories-slider {
     width: 100%;
 
     > header {
@@ -170,10 +178,11 @@ main {
     }
   }
 
-  > .business-strategy-card {
+  .business-strategy-card {
     width: 100%;
     padding: 20px 20px;
-    > .card {
+    .card {
+      border: none;
       > .card-title {
         display: flex;
         flex-direction: column;
@@ -186,14 +195,14 @@ main {
           font-size: 15px;
         }
       }
-      > .card-body {
+      .card-body {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        > .strategy-card {
+        .strategy-card {
           flex: 1;
           min-width: 350px;
-          > .card-body {
+          .card-body {
             display: flex;
             flex-direction: column;
 

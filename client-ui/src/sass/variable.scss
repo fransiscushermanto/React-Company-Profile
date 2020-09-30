@@ -19,3 +19,48 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 $white: #f8fafc;
 $black: #000000;
+
+// Variable
+$thin-black-hover-bg: rgba(0, 0, 0, 0.13);
+$light-black-hover-bg: rgba(0, 0, 0, 0.09);
+$icon-shadow: rgba(0, 0, 0, 0.5);
+$top-nav-height: 60px;
+
+//Animation
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: $red;
+  }
+  40% {
+    stroke: $blue;
+  }
+  66% {
+    stroke: $green;
+  }
+  80%,
+  90% {
+    stroke: $yellow;
+  }
+}
