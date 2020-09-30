@@ -66,13 +66,13 @@ const App = ({ children }) => {
     window.addEventListener("load", function () {
       setTimeout(() => {
         setLoading(false);
-      }, 1000);
+      }, 500);
     });
     return () =>
       window.removeEventListener("load", function () {
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 500);
       });
   }, []);
 
